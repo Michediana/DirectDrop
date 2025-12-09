@@ -321,6 +321,10 @@ export default function App() {
     }
   }
 
+  function isPeerConnected(peerID: number) {
+    return connectionsRef.current[peerID] && connectionsRef.current[peerID].isDataChannelOpen
+  }
+
   return (
     <div className="App">
       <h1>Direct Drop</h1>
@@ -330,7 +334,7 @@ export default function App() {
         {clients.map((client) => (
           client.id !== myID &&
           <li key={client.id}>
-            {client.id} <a onClick={() => connectToPeer(client.id)}>CONNETTI</a>
+            {client.id} <a onClick={() => !isPeerConnected(client.id) && connectToPeer(client.id)}>{isPeerConnected(client.id) ? 'CONNESSO' : 'CONNETTI'}</a>
           </li>
         ))}
       </ul>
