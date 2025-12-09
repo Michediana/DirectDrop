@@ -13,7 +13,7 @@ export default function App() {
   const wsRef = useRef(null)
 
   useEffect(() => {
-    const WSS = new WebSocket("ws://192.168.188.10:3000");
+    const WSS = new WebSocket("ws://192.168.1.99:3000");
     wsRef.current = WSS
 
     WSS.onopen = () => {
@@ -323,7 +323,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>LOCAL DROP</h1>
+      <h1>Direct Drop</h1>
       <h2>Your ID: {myID}</h2>
       <h3>Available Clients:</h3>
       <ul>
